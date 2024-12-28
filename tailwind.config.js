@@ -4,6 +4,17 @@ module.exports = {
   presets: [require("nativewind/preset")],
   theme: {
     extend: {
+      animation: {
+        updown: 'updown 3s ease-in-out infinite',
+      },
+      keyframes: {
+        updown: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-13px)' },
+        },
+      },
+
+
       colors: {
         primary: "#161622",
         secondary: {

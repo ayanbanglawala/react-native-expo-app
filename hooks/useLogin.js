@@ -35,6 +35,7 @@ const useLogin = () => {
 
         // Save user info to AsyncStorage
         await AsyncStorage.setItem('user', JSON.stringify(data));
+        
         setAuthUser(data); // Update user in AuthContext
 
         // Navigate to the home screen

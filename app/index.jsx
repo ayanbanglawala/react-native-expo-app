@@ -1,13 +1,36 @@
 import { Image, ScrollView, Text, View } from "react-native";
 import "../global.css";
-import { Link, SplashScreen, Redirect, router } from "expo-router";
+import { Link, SplashScreen, Redirect, router, useNavigation } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { images } from "../constants"
 import CustomButton from "../components/CustomButton"
+import { useEffect } from "react";
+import { navigate } from "expo-router/build/global-state/routing";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 SplashScreen.preventAutoHideAsync();
 export default function Index() {
+  const navigation = useNavigation();
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const user = await AsyncStorage.getItem('user');
+        if (user) {
+          // alert(JSON.stringify(JSON.parse(user))); // Display the stored user data
+          router.push("/(tabs)/home")
+        } else {
+          navigation.navigate('(auth)'); 
+          // alert('No user data found!');
+        }
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+        alert('Error fetching user data!');
+      }
+    };
+
+    fetchUserData();
+  }, []);
   return (
     <SafeAreaView className="bg-primary h-full">
       <ScrollView contentContainerStyle={{ height: '100%' }}>
