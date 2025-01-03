@@ -34,7 +34,7 @@ export default function Index() {
   return (
     <SafeAreaView className="bg-primary h-full">
       <ScrollView contentContainerStyle={{ height: '100%' }}>
-        <View className="w-full h-full px-4 items-center min-h-[85px] px-4">
+        <View className="w-full h-full px-4 items-center min-h-[85px]">
           <Image source={images.logo} className="w-[130px] h-[83px]" resizeMode="contain" />
           <Image source={images.cards} className="max-w--[380px] w-full h-[300px]" resizeMode="contain" />
           <View className="relative mt-5">
